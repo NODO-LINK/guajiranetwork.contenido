@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#4F46E5">
+<meta name="color-scheme" content="light">
+<meta name="description" content="Centro de Contenido de Guajira Network: video y flyers del día listos para publicar en WhatsApp.">
+<title>Guajira Network · Centro de Contenido</title>
+<link rel="manifest" href="manifest.json">
+<link rel="icon" type="image/png" href="icons/icon-192.png">
+<link rel="apple-touch-icon" href="icons/icon-192.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --indigo:#4F46E5;--indigo-700:#4338CA;--indigo-900:#1E1B4B;--morado:#6D28D9;
+  --lila:#C4B5FD;--lila-50:#F5F3FF;--lila-100:#EDE9FE;--lila-200:#DDD6FE;
+  --negro:#0B0A12;--tinta:#1C1B29;--gris:#6B6880;--gris-2:#9A97AD;--gris-3:#C9C7D6;
+  --linea:#ECEAF4;--superficie:#F8F7FC;
+  --ok:#15803D;--ok-50:#ECFDF3;--ok-200:#BBF7D0;--warn:#B45309;--warn-50:#FFF7E6;--warn-200:#FDE3B5;--err:#DC2626;
+  --r-xl:26px;--r-lg:20px;--r-md:14px;
+  --sombra:0 1px 2px rgba(17,12,46,.05),0 12px 28px -16px rgba(46,16,101,.22);
+  --sombra-2:0 20px 40px -18px rgba(46,16,101,.45);
+  --f-display:'Poppins',system-ui,-apple-system,'Segoe UI',Roboto,Arial,sans-serif;
+  --f-text:'Inter',system-ui,-apple-system,'Segoe UI',Roboto,Arial,sans-serif;
+  --safe-t:env(safe-area-inset-top,0px);--safe-b:env(safe-area-inset-bottom,0px);--ancho:520px;
+}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+body{font-family:var(--f-text);font-size:15px;line-height:1.45;color:var(--tinta);background:#fff;-webkit-font-smoothing:antialiased;overscroll-behavior-y:none}
+button{font:inherit;color:inherit;border:0;background:none;cursor:pointer}
+img,video{display:block;max-width:100%}
+.hidden{display:none!important}
+svg.i{width:20px;height:20px;flex:none;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+
+/* Marca */
+.marca{display:flex;align-items:center;gap:10px}
+.marca>svg{width:38px;height:38px;flex:none;border-radius:10px}
+.marca .wm{display:flex;flex-direction:column;line-height:1}
+.marca .wm b{font-family:var(--f-display);font-weight:800;font-size:18px;letter-spacing:.045em;color:var(--negro)}
+.marca .wm span{font-family:var(--f-display);font-weight:600;font-size:9.5px;letter-spacing:.5em;color:#8A8798;margin-top:4px}
+
+/* Splash */
+#splash{position:fixed;inset:0;display:grid;place-items:center;background:#fff;z-index:90;transition:opacity .35s}
+#splash.fuera{opacity:0;pointer-events:none}
+#splash .centro{display:flex;flex-direction:column;align-items:center;gap:26px}
+#splash svg{width:76px;height:76px;border-radius:20px;box-shadow:var(--sombra-2);animation:latido 1.6s ease-in-out infinite}
+.carga{width:120px;height:3px;border-radius:3px;background:var(--lila-100);overflow:hidden;position:relative}
+.carga::after{content:"";position:absolute;inset:0;width:40%;border-radius:3px;background:linear-gradient(90deg,var(--indigo),var(--morado));animation:barrido 1.1s ease-in-out infinite}
+@keyframes barrido{0%{transform:translateX(-100%)}100%{transform:translateX(260%)}}
+@keyframes latido{0%,100%{transform:scale(1)}50%{transform:scale(1.04)}}
+
+/* Shell */
+.app{max-width:var(--ancho);margin:0 auto;min-height:100vh;min-height:100dvh;padding-bottom:calc(20px + var(--safe-b))}
+.topbar{position:sticky;top:0;z-index:20;display:flex;align-items:center;justify-content:space-between;padding:12px 18px;padding-top:calc(var(--safe-t) + 12px);background:rgba(255,255,255,.88);backdrop-filter:saturate(160%) blur(14px);-webkit-backdrop-filter:saturate(160%) blur(14px);border-bottom:1px solid transparent;transition:border-color .2s}
+.topbar.borde{border-bottom-color:var(--linea)}
+.refrescar{width:42px;height:42px;border-radius:13px;display:grid;place-items:center;background:var(--lila-50);border:1px solid var(--lila-100);color:var(--indigo-700)}
+.refrescar.girando svg{animation:giro .8s linear infinite}
+.vista{padding:6px 18px 0}
+.saludo{padding:10px 2px 16px}
+.saludo .fecha{font-size:12.5px;font-weight:600;color:var(--indigo);letter-spacing:.06em;text-transform:uppercase}
+.saludo h2{font-family:var(--f-display);font-weight:700;font-size:25px;line-height:1.2;color:var(--negro);margin-top:4px;letter-spacing:-.01em}
+.sec-h{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:26px 2px 12px}
+.sec-h h3{font-family:var(--f-display);font-weight:700;font-size:17px;color:var(--negro)}
+.sec-h small{font-size:12.5px;color:var(--gris);font-weight:500}
+
+/* Píldoras */
+.pill{display:inline-flex;align-items:center;gap:5px;height:26px;padding:0 10px;border-radius:999px;font-size:11.5px;font-weight:700;letter-spacing:.02em;white-space:nowrap}
+.pill svg.i{width:13px;height:13px;stroke-width:2.6}
+.pill.ok{background:var(--ok-50);color:var(--ok)}
+.pill.pend{background:var(--warn-50);color:var(--warn)}
+
+/* Hero */
+.hero{position:relative;overflow:hidden;border-radius:var(--r-xl);padding:20px 20px 18px;color:#fff;background:linear-gradient(135deg,var(--indigo-900) 0%,var(--indigo-700) 52%,var(--morado) 100%);box-shadow:var(--sombra-2)}
+.hero .hilos{position:absolute;inset:0;width:100%;height:100%;color:var(--lila);opacity:.28;pointer-events:none}
+.hero-fila{position:relative;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.eyebrow{font-size:11.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--lila)}
+.hero-num{display:block;font-family:var(--f-display);font-weight:800;font-size:44px;line-height:1;margin-top:8px;letter-spacing:-.02em}
+.hero-num span{font-size:22px;font-weight:600;color:rgba(255,255,255,.6);margin-left:3px}
+.hero-txt{display:block;font-size:13.5px;color:rgba(255,255,255,.85);margin-top:6px}
+.anillo{width:74px;height:74px;flex:none;position:relative}
+.anillo svg{width:100%;height:100%;transform:rotate(-90deg)}
+.anillo circle{fill:none;stroke-width:7}
+.anillo .base{stroke:rgba(255,255,255,.16)}
+.anillo .prog{stroke:#fff;stroke-linecap:round;transition:stroke-dashoffset .6s cubic-bezier(.2,.8,.2,1)}
+.anillo b{position:absolute;inset:0;display:grid;place-items:center;font-family:var(--f-display);font-size:16px;font-weight:700}
+.segmentos{position:relative;display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-top:18px}
+.seg{display:flex;flex-direction:column;gap:7px}
+.seg i{height:5px;border-radius:5px;background:rgba(255,255,255,.18)}
+.seg.pend i{background:rgba(255,255,255,.55)}
+.seg.ok i{background:#fff}
+.seg span{font-size:11px;font-weight:600;color:rgba(255,255,255,.75);display:flex;align-items:center;gap:4px}
+.seg.ok span{color:#fff}
+.seg svg.i{width:12px;height:12px;stroke-width:3}
+
+.aviso{display:flex;gap:11px;align-items:flex-start;margin-top:14px;padding:13px 14px;border-radius:var(--r-md);background:var(--warn-50);border:1px solid var(--warn-200);color:#7C4A03;font-size:13px}
+.aviso svg.i{color:var(--warn);width:19px;height:19px;margin-top:1px}
+.aviso b{display:block;color:#5C3702;font-size:13.5px}
+
+/* Piezas */
+.pieza{background:#fff;border:1px solid var(--linea);border-radius:var(--r-xl);box-shadow:var(--sombra);overflow:hidden}
+.pieza+.pieza,.vacia+.pieza,.pieza+.vacia,.vacia+.vacia{margin-top:16px}
+.pieza-h{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:12px 14px 12px 16px;border-bottom:1px solid var(--linea)}
+.pieza-h .tag{display:inline-flex;align-items:center;gap:8px;font-family:var(--f-display);font-weight:700;font-size:14.5px;color:var(--negro)}
+.pieza-h .tag svg.i{width:17px;height:17px;color:var(--indigo)}
+.pieza-h .tag>span{display:flex;flex-direction:column;line-height:1.2}
+.pieza-h .tag small{font-family:var(--f-text);font-weight:500;font-size:11.5px;color:var(--gris-2);margin-top:2px}
+.media{position:relative;display:block;width:100%;background:var(--superficie);cursor:zoom-in;overflow:hidden;aspect-ratio:4/5}
+.media.video{background:radial-gradient(120% 90% at 50% 0%,#2A2550 0%,var(--negro) 70%)}
+.media .marco{position:absolute;inset:0;display:flex;align-items:center;justify-content:center}
+.media.flyer img{width:100%;height:100%;object-fit:contain}
+.media.video .marco{padding:16px}
+.media.video video{height:100%;width:auto;max-width:100%;aspect-ratio:9/16;object-fit:cover;border-radius:14px;box-shadow:0 16px 40px -14px rgba(0,0,0,.8);background:#000}
+.media .play{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:66px;height:66px;border-radius:50%;display:grid;place-items:center;background:rgba(255,255,255,.18);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border:1.5px solid rgba(255,255,255,.45)}
+.media .play svg{width:26px;height:26px;fill:#fff;margin-left:4px}
+.cuerpo{padding:16px}
+.texto-sug{display:flex;gap:12px;align-items:flex-start;padding:12px 12px 12px 14px;border-radius:var(--r-md);background:var(--superficie);border:1px solid var(--linea);margin-bottom:14px}
+.texto-sug div{flex:1;min-width:0}
+.texto-sug small{display:block;font-size:10.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--gris-2);margin-bottom:3px}
+.texto-sug p{font-size:13.5px;white-space:pre-line;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.texto-sug button{flex:none;display:inline-flex;align-items:center;gap:5px;height:32px;padding:0 10px;border-radius:9px;background:#fff;border:1px solid var(--linea);font-size:12.5px;font-weight:600;color:var(--indigo)}
+.texto-sug button svg.i{width:15px;height:15px}
+.calidad{display:flex;align-items:center;gap:6px;margin-top:10px;font-size:11.5px;color:var(--gris-2);justify-content:center}
+.calidad svg.i{width:14px;height:14px;color:var(--ok)}
+.vacia{display:flex;align-items:center;gap:14px;padding:18px;border:1.5px dashed var(--gris-3);border-radius:var(--r-xl);background:var(--superficie)}
+.vacia .ic{width:46px;height:46px;flex:none;border-radius:14px;display:grid;place-items:center;background:#fff;border:1px solid var(--linea);color:var(--gris-2)}
+.vacia strong{display:block;font-size:14.5px}
+.vacia p{font-size:13px;color:var(--gris);margin-top:2px}
+
+/* Botones */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;height:50px;padding:0 16px;border-radius:var(--r-md);font-weight:600;font-size:15px;transition:transform .12s,opacity .2s;white-space:nowrap;user-select:none}
+.btn:active{transform:scale(.98)}
+.btn[disabled]{opacity:.6;pointer-events:none}
+.btn-wa{width:100%;background:linear-gradient(135deg,var(--indigo) 0%,var(--morado) 100%);color:#fff;box-shadow:0 10px 22px -12px rgba(79,70,229,.8)}
+.btn-wa .wa{width:22px;height:22px;border-radius:50%;background:#fff;display:grid;place-items:center}
+.btn-wa .wa svg{width:14px;height:14px;fill:#25D366}
+.btn-sec{background:#fff;border:1.5px solid var(--linea);height:46px;font-size:14px}
+.btn-sec svg.i{width:18px;height:18px;color:var(--indigo)}
+.btn-ok{background:var(--ok-50);border-color:var(--ok-200);color:var(--ok)}
+.btn-ok svg.i{color:var(--ok)}
+.acciones-sec{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px}
+.giro{width:18px;height:18px;border:2.5px solid currentColor;border-right-color:transparent;border-radius:50%;animation:giro .7s linear infinite}
+@keyframes giro{to{transform:rotate(360deg)}}
+
+/* Pie legal */
+.legal{text-align:center;padding:28px 8px 6px;display:flex;flex-direction:column;align-items:center;gap:6px}
+.conatel{display:inline-flex;align-items:center;gap:7px;padding:6px 12px 6px 9px;border-radius:999px;background:var(--lila-50);border:1px solid var(--lila-100);color:var(--indigo-700);font-size:11.5px;font-weight:600}
+.conatel svg.i{width:15px;height:15px;color:var(--indigo)}
+.conatel b{font-weight:700;letter-spacing:.04em}
+.legal p{font-size:11px;color:var(--gris-2);letter-spacing:.02em}
+.legal p b{color:var(--gris);font-weight:600;letter-spacing:.05em}
+.legal .slogan{font-family:var(--f-display);font-style:italic;font-weight:500;font-size:11.5px}
+
+/* Visor */
+.visor{position:fixed;inset:0;z-index:60;background:#05040A;display:flex;flex-direction:column}
+.visor-top{display:flex;align-items:center;gap:12px;padding:12px 14px;padding-top:calc(var(--safe-t) + 12px);color:#fff}
+.visor-top button{width:42px;height:42px;border-radius:12px;display:grid;place-items:center;background:rgba(255,255,255,.1)}
+.visor-top strong{display:block;font-size:15px;font-weight:600}
+.visor-top span{font-size:12px;color:rgba(255,255,255,.6)}
+.visor-media{flex:1;min-height:0;display:grid;place-items:center;padding:6px 14px}
+.visor-media img,.visor-media video{max-width:100%;max-height:100%;border-radius:14px;object-fit:contain}
+.visor-acc{padding:14px 16px calc(var(--safe-b) + 16px);display:flex;flex-direction:column;max-width:var(--ancho);width:100%;margin:0 auto}
+.visor-acc .btn-sec{background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.14);color:#fff}
+.visor-acc .btn-sec svg.i{color:var(--lila)}
+.visor-acc .btn-ok{background:rgba(22,163,74,.16);border-color:rgba(74,222,128,.35);color:#86EFAC}
+.visor-acc .btn-ok svg.i{color:#86EFAC}
+
+/* Toast */
+.toast{position:fixed;left:50%;bottom:calc(var(--safe-b) + 24px);transform:translate(-50%,20px);z-index:80;width:calc(100% - 32px);max-width:440px;display:flex;align-items:center;gap:12px;padding:13px 14px 13px 16px;border-radius:16px;background:var(--negro);color:#fff;font-size:13.5px;line-height:1.4;box-shadow:0 20px 40px -14px rgba(0,0,0,.5);opacity:0;pointer-events:none;transition:opacity .25s,transform .25s}
+.toast.ver{opacity:1;transform:translate(-50%,0);pointer-events:auto}
+.toast.alto{bottom:calc(var(--safe-b) + 170px)}
+.toast .ic{width:28px;height:28px;flex:none;border-radius:9px;display:grid;place-items:center;background:rgba(196,181,253,.16);color:var(--lila)}
+.toast.error .ic{background:rgba(248,113,113,.16);color:#FCA5A5}
+.toast .ic svg.i{width:16px;height:16px}
+.toast p{flex:1}
+.toast button{flex:none;height:34px;padding:0 12px;border-radius:10px;background:#fff;color:var(--negro);font-weight:700;font-size:12.5px}
+@media (min-width:560px){.app{border-left:1px solid var(--linea);border-right:1px solid var(--linea)}}
+</style>
+</head>
+<body>
+
+<div id="splash"><div class="centro"><span id="splashLogo"></span><div class="carga"></div></div></div>
+
+<section id="app" class="app">
+  <header class="topbar" id="topbar"><div id="topMarca"></div><button class="refrescar" id="btnRefrescar" data-action="refrescar" aria-label="Actualizar"><svg class="i"><use href="#i-cambiar"/></svg></button></header>
+  <main id="vista" class="vista"></main>
+</section>
+
+<div id="visor" class="visor hidden" role="dialog" aria-modal="true"></div>
+<div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-descargar" viewBox="0 0 24 24"><path d="M12 4v12M7 11l5 5 5-5"/><path d="M4 15v3a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3v-3"/></symbol>
+  <symbol id="i-copiar" viewBox="0 0 24 24"><rect x="8" y="8" width="13" height="13" rx="3"/><path d="M16 8V6a3 3 0 0 0-3-3H6a3 3 0 0 0-3 3v7a3 3 0 0 0 3 3h2"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12.5 4.5 4.5L19 7.5"/></symbol>
+  <symbol id="i-check-c" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="m8 12.3 2.8 2.8L16.2 9.6"/></symbol>
+  <symbol id="i-circulo" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/></symbol>
+  <symbol id="i-video" viewBox="0 0 24 24"><rect x="2.5" y="6" width="13.5" height="12" rx="3"/><path d="m16 10.5 5.5-3.2v9.4L16 13.5"/></symbol>
+  <symbol id="i-imagen" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="3.5"/><circle cx="9" cy="9" r="2"/><path d="m21 15.5-4.6-4.6L6 21"/></symbol>
+  <symbol id="i-x" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></symbol>
+  <symbol id="i-escudo" viewBox="0 0 24 24"><path d="M12 2.8 4.5 5.6v5.8c0 4.7 3.2 8.6 7.5 9.8 4.3-1.2 7.5-5.1 7.5-9.8V5.6L12 2.8Z"/><path d="m8.8 12 2.2 2.2 4.3-4.4"/></symbol>
+  <symbol id="i-cambiar" viewBox="0 0 24 24"><path d="M20 11a8 8 0 0 0-14.6-4.5L4 8M4 4v4h4M4 13a8 8 0 0 0 14.6 4.5L20 16M20 20v-4h-4"/></symbol>
+  <symbol id="i-alerta" viewBox="0 0 24 24"><path d="M12 3.5 2.5 20h19L12 3.5Z"/><path d="M12 10v4.5M12 17.4v.2"/></symbol>
+  <symbol id="i-hd" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="M7 9v6M7 12h3.5M10.5 9v6M14 9v6h1.5a3 3 0 0 0 0-6H14Z"/></symbol>
+</svg>
+
+<script>
+/* ═══════════════════════════════════════════════════════════════════════════
+   GUAJIRA NETWORK · CENTRO DE CONTENIDO
+   Cada día sube a la carpeta  contenido/  (junto a este index.html) estos archivos,
+   SIEMPRE con el mismo nombre, para que reemplacen a los del día anterior:
+
+       video.mp4     → video del día
+       flyer1.jpg    → flyer 1   (también vale .png)
+       flyer2.jpg    → flyer 2
+       flyer3.jpg    → flyer 3
+       texto.txt     → (opcional) texto para la descripción del estado
+
+   La app los muestra tal cual y los descarga/comparte en su calidad ORIGINAL.
+   ═══════════════════════════════════════════════════════════════════════════ */
+const CARPETA = "contenido/";
+const TZ = "America/Caracas";
+const EMPRESA = { razon: "GUAJIRA NETWORK 2107, C.A.", rif: "J-50842197-3", conatel: "HGST-00852", slogan: "El hilo que conecta a la Guajira" };
+const SLOTS = [
+  { id: "video",  tipo: "video", nombre: "Video del día", corto: "Video",   archivos: ["video.mp4", "video.MP4", "video.mov"] },
+  { id: "flyer1", tipo: "flyer", nombre: "Flyer 1",       corto: "Flyer 1", archivos: ["flyer1.jpg", "flyer1.jpeg", "flyer1.png", "flyer1.JPG", "flyer1.PNG"] },
+  { id: "flyer2", tipo: "flyer", nombre: "Flyer 2",       corto: "Flyer 2", archivos: ["flyer2.jpg", "flyer2.jpeg", "flyer2.png", "flyer2.JPG", "flyer2.PNG"] },
+  { id: "flyer3", tipo: "flyer", nombre: "Flyer 3",       corto: "Flyer 3", archivos: ["flyer3.jpg", "flyer3.jpeg", "flyer3.png", "flyer3.JPG", "flyer3.PNG"] }
+];
+const TEXTO_BASE =
+`🌐 *Guajira Network*
+_El hilo que conecta a la Guajira_
+
+📲 Atención al cliente: 0424-4825404
+🛠️ Soporte e instalación: 0414-3666377
+📍 San Rafael de El Moján
+📸 IG: @guajiranetwork`;
+
+/* ───────── Marca ───────── */
+const LOGO = (s = 38) => `<svg width="${s}" height="${s}" viewBox="0 0 64 64" role="img" aria-label="Guajira Network"><rect width="64" height="64" rx="16" fill="#4F46E5"/><path d="M17 19l13 13-13 13" fill="none" stroke="#C4B5FD" stroke-width="7.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M33 19l13 13-13 13" fill="none" stroke="#FFFFFF" stroke-width="7.5" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+const MARCA = () => `<div class="marca">${LOGO()}<div class="wm"><b>GUAJIRA</b><span>NETWORK</span></div></div>`;
+const HILOS = `<svg class="hilos" viewBox="0 0 400 200" preserveAspectRatio="none" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="1.4"><path d="M-20 170C70 90 150 210 260 120S380 30 420 60"/><path d="M-20 186C80 110 160 226 270 138S384 52 420 82" opacity=".7"/><path d="M-20 202C90 130 170 242 280 156S388 74 420 104" opacity=".45"/></g></svg>`;
+const ic = n => `<svg class="i"><use href="#i-${n}"/></svg>`;
+const LEGAL = `<footer class="legal"><span class="conatel">${ic("escudo")}Habilitado por CONATEL · <b>${EMPRESA.conatel}</b></span><p>${EMPRESA.razon} · RIF <b>${EMPRESA.rif}</b></p><p class="slogan">${EMPRESA.slogan}</p></footer>`;
+const WA = `<span class="wa"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm5.8 14.1c-.2.7-1.4 1.3-2 1.4-.5.1-1.2.1-1.9-.1a17 17 0 0 1-1.7-.6 13.4 13.4 0 0 1-5.1-4.5c-.4-.5-1-1.5-1-2.8 0-1.3.7-2 1-2.3.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.3.5-.4.4c-.1.1-.3.3-.1.6.2.3.7 1.2 1.6 2a7.3 7.3 0 0 0 2.3 1.4c.3.1.5.1.6-.1l.9-1.1c.2-.3.4-.2.6-.1l1.9.9c.3.1.5.2.5.3.1.1.1.7-.1 1.3Z"/></svg></span>`;
+
+/* ───────── Utilidades ───────── */
+const $ = s => document.querySelector(s);
+const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+const waFormato = t => esc(t).replace(/\*([^*\n]+)\*/g, "<b>$1</b>").replace(/(^|\s)_([^_\n]+)_/g, "$1<i>$2</i>");
+const cap = s => s ? s[0].toUpperCase() + s.slice(1) : s;
+const diaDe = d => new Intl.DateTimeFormat("en-CA", { timeZone: TZ, year: "numeric", month: "2-digit", day: "2-digit" }).format(d);
+const hoyISO = () => diaDe(new Date());
+const fechaLarga = d => cap(new Intl.DateTimeFormat("es-VE", { timeZone: TZ, weekday: "long", day: "numeric", month: "long" }).format(d));
+const hora = ms => new Intl.DateTimeFormat("es-VE", { timeZone: TZ, hour: "numeric", minute: "2-digit" }).format(new Date(ms));
+const horaTZ = () => Number(new Intl.DateTimeFormat("en-US", { timeZone: TZ, hour: "numeric", hourCycle: "h23" }).format(new Date()));
+const saludo = () => { const h = horaTZ(); return h < 12 ? "Buenos días" : h < 19 ? "Buenas tardes" : "Buenas noches"; };
+const dur = s => s ? Math.floor(s / 60) + ":" + String(Math.round(s % 60)).padStart(2, "0") : "";
+const peso = b => !b ? "" : b > 1048576 ? (b / 1048576).toFixed(1).replace(".", ",") + " MB" : Math.round(b / 1024) + " KB";
+
+/* ───────── Estado ───────── */
+const S = { dia: hoyISO(), piezas: {}, texto: TEXTO_BASE, cargando: false, ocupado: {}, visor: null, listo: false };
+
+/* "Publicado" se guarda en el teléfono solo por hoy; si subes un archivo nuevo, vuelve a "por publicar" */
+const claveDia = () => "gn_publicado_" + S.dia;
+const leerPub = () => { try { return JSON.parse(localStorage.getItem(claveDia())) || {}; } catch { return {}; } };
+function guardarPub(m) { try { Object.keys(localStorage).filter(k => k.startsWith("gn_publicado_") && k !== claveDia()).forEach(k => localStorage.removeItem(k)); localStorage.setItem(claveDia(), JSON.stringify(m)); } catch {} }
+const firma = p => p ? `${p.archivo}|${p.modificado || ""}|${p.bytes || ""}` : "";
+const publicadoEn = p => { const r = leerPub()[p.slot]; return r && r.firma === firma(p) ? r.t : null; };
+
+/* ───────── Carga del contenido ───────── */
+async function buscarArchivo(slot) {
+  const v = Date.now();
+  for (const nombre of slot.archivos) {
+    const url = `${CARPETA}${nombre}?v=${v}`;
+    try {
+      const r = await fetch(url, { method: "HEAD", cache: "no-store" });
+      if (!r.ok) continue;
+      const lm = r.headers.get("last-modified"), len = r.headers.get("content-length");
+      return { slot: slot.id, tipo: slot.tipo, archivo: nombre, url, mime: r.headers.get("content-type") || "", modificado: lm ? Date.parse(lm) : null, bytes: len ? +len : null };
+    } catch {}
+  }
+  return null;
+}
+async function cargar(aviso) {
+  if (S.cargando) return; S.cargando = true; $("#btnRefrescar").classList.add("girando");
+  S.dia = hoyISO();
+  const [piezas, texto] = await Promise.all([
+    Promise.all(SLOTS.map(buscarArchivo)),
+    fetch(`${CARPETA}texto.txt?v=${Date.now()}`, { cache: "no-store" }).then(r => r.ok ? r.text() : "").catch(() => "")
+  ]);
+  const antes = SLOTS.map(s => firma(S.piezas[s.id])).join();
+  S.piezas = Object.fromEntries(SLOTS.map((s, i) => [s.id, piezas[i]]));
+  S.texto = texto.trim() || TEXTO_BASE;
+  S.cargando = false; $("#btnRefrescar").classList.remove("girando");
+  const cambio = antes !== SLOTS.map(s => firma(S.piezas[s.id])).join();
+  if (cambio || !S.listo) render();
+  if (aviso) toast(cambio ? "Hay contenido nuevo." : "Ya tienes lo más reciente.");
+  if (!S.listo) { S.listo = true; $("#splash").classList.add("fuera"); }
+}
+
+/* ───────── Render ───────── */
+function render() {
+  const p = S.piezas, disp = SLOTS.filter(s => p[s.id]), pub = disp.filter(s => publicadoEn(p[s.id]));
+  const circ = 2 * Math.PI * 30, off = circ * (1 - pub.length / 4);
+  // ¿El contenido es de hoy? (según la fecha en que se subió)
+  const fechas = disp.map(s => p[s.id].modificado).filter(Boolean);
+  const ultima = fechas.length ? Math.max(...fechas) : null;
+  const viejo = ultima && diaDe(new Date(ultima)) < S.dia;
+  const msg = !disp.length ? "El contenido de hoy aún no ha llegado. Toca ↻ para revisar."
+    : pub.length === 4 ? "¡Todo publicado! Excelente trabajo."
+    : disp.length < 4 ? `${disp.length} de 4 piezas disponibles`
+    : `Faltan ${4 - pub.length} por publicar en los estados`;
+  $("#vista").innerHTML = `
+    <div class="saludo"><p class="fecha">${fechaLarga(new Date())}</p><h2>${saludo()}</h2></div>
+    <section class="hero">${HILOS}
+      <div class="hero-fila"><div><span class="eyebrow">Contenido de hoy</span><strong class="hero-num">${pub.length}<span>/4</span></strong><span class="hero-txt">${msg}</span></div>
+      <div class="anillo"><svg viewBox="0 0 74 74"><circle class="base" cx="37" cy="37" r="30"/><circle class="prog" cx="37" cy="37" r="30" stroke-dasharray="${circ}" stroke-dashoffset="${off}"/></svg><b>${Math.round(pub.length / 4 * 100)}%</b></div></div>
+      <div class="segmentos">${SLOTS.map(s => { const st = p[s.id] ? (publicadoEn(p[s.id]) ? "ok" : "pend") : ""; return `<div class="seg ${st}"><i></i><span>${st === "ok" ? ic("check") : ""}${s.corto}</span></div>`; }).join("")}</div>
+    </section>
+    ${viejo ? `<div class="aviso">${ic("alerta")}<div><b>Todavía no llega el contenido de hoy</b>Esto se subió el ${fechaLarga(new Date(ultima)).toLowerCase()}. Toca ↻ en un rato para revisar.</div></div>` : ""}
+    <div class="sec-h"><h3>Video del día</h3><small>${p.video ? "1 de 1" : "0 de 1"}</small></div>
+    ${p.video ? pieza(p.video) : vacia(SLOTS[0])}
+    <div class="sec-h"><h3>Flyers del día</h3><small>${SLOTS.slice(1).filter(s => p[s.id]).length} de 3</small></div>
+    ${SLOTS.slice(1).map(s => p[s.id] ? pieza(p[s.id]) : vacia(s)).join("")}
+    ${LEGAL}`;
+  // Medidas reales (para mostrar resolución y duración)
+  document.querySelectorAll("[data-medir]").forEach(el => {
+    const id = el.dataset.medir, set = () => { const pz = S.piezas[id]; if (!pz) return; const w = el.naturalWidth || el.videoWidth, h = el.naturalHeight || el.videoHeight; if (w) { pz.ancho = w; pz.alto = h; } if (el.duration) pz.duracion = el.duration; const m = document.getElementById("meta-" + id); if (m) m.textContent = metaTexto(pz); if (pz.tipo === "flyer" && w) el.closest(".media").style.aspectRatio = Math.max(w / h, .8); };
+    if (el.tagName === "IMG") { el.complete ? set() : el.addEventListener("load", set, { once: true }); }
+    else { const vista = () => { set(); if (el.currentTime < .1 && el.duration) el.currentTime = Math.min(2.6, el.duration / 3); }; el.readyState >= 1 ? vista() : el.addEventListener("loadedmetadata", vista, { once: true }); }
+  });
+}
+const metaTexto = p => [p.ancho ? `${p.ancho}×${p.alto}` : "", p.duracion ? dur(p.duracion) : "", peso(p.bytes)].filter(Boolean).join(" · ");
+function pieza(p) {
+  const s = SLOTS.find(x => x.id === p.slot), t = publicadoEn(p), ocup = S.ocupado[p.slot];
+  const media = p.tipo === "video"
+    ? `<video data-medir="${p.slot}" src="${esc(p.url)}#t=2.6" muted playsinline preload="metadata"></video><span class="play"><svg viewBox="0 0 24 24"><path d="M7 4.5v15l13-7.5z"/></svg></span>`
+    : `<img data-medir="${p.slot}" src="${esc(p.url)}" alt="${s.nombre}">`;
+  return `<article class="pieza">
+    <div class="pieza-h"><span class="tag">${ic(p.tipo === "video" ? "video" : "imagen")}<span>${p.tipo === "video" ? "Video" : s.nombre}<small id="meta-${p.slot}">${metaTexto(p)}</small></span></span>
+      ${t ? `<span class="pill ok">${ic("check")}Publicado · ${hora(t)}</span>` : `<span class="pill pend">Por publicar</span>`}</div>
+    <div class="media ${p.tipo}" data-action="ver" data-slot="${p.slot}" role="button" aria-label="Ver ${s.nombre} en grande"><div class="marco">${media}</div></div>
+    <div class="cuerpo">
+      <div class="texto-sug"><div><small>Texto para el estado</small><p>${waFormato(S.texto)}</p></div><button data-action="copiar">${ic("copiar")}Copiar</button></div>
+      ${botones(p, ocup, t)}
+      <p class="calidad">${ic("hd")}Se descarga en calidad original, sin compresión</p>
+    </div></article>`;
+}
+const botones = (p, ocup, t) => `<button class="btn btn-wa" data-action="compartir" data-slot="${p.slot}" ${ocup ? "disabled" : ""}>${ocup === "compartir" ? `<span class="giro"></span>Preparando ${p.tipo === "video" ? "video" : "imagen"}…` : `${WA}Compartir en WhatsApp`}</button>
+  <div class="acciones-sec"><button class="btn btn-sec" data-action="descargar" data-slot="${p.slot}" ${ocup ? "disabled" : ""}>${ocup === "descargar" ? `<span class="giro"></span>Descargando…` : `${ic("descargar")}Descargar`}</button>
+  <button class="btn btn-sec ${t ? "btn-ok" : ""}" data-action="publicado" data-slot="${p.slot}">${ic(t ? "check-c" : "circulo")}${t ? "Publicado" : "Marcar publicado"}</button></div>`;
+const vacia = s => `<div class="vacia"><span class="ic">${ic(s.tipo === "video" ? "video" : "imagen")}</span><div><strong>${s.nombre}</strong><p>Aún no está listo. Toca ↻ para revisar.</p></div></div>`;
+
+/* ───────── Acciones ───────── */
+async function copiarTexto(t) {
+  try { await navigator.clipboard.writeText(t); return true; }
+  catch { const a = document.createElement("textarea"); a.value = t; a.style.cssText = "position:fixed;opacity:0"; document.body.appendChild(a); a.select(); let ok = false; try { ok = document.execCommand("copy"); } catch {} a.remove(); return ok; }
+}
+/* Descarga el archivo ORIGINAL, byte por byte, sin recomprimir */
+async function archivoOriginal(p) {
+  const r = await fetch(p.url, { cache: "no-store" });
+  if (!r.ok) throw new Error("HTTP " + r.status);
+  const blob = await r.blob();
+  const ext = p.archivo.split(".").pop().toLowerCase();
+  const type = blob.type || p.mime || (p.tipo === "video" ? "video/mp4" : ext === "png" ? "image/png" : "image/jpeg");
+  return new File([blob], `GuajiraNetwork_${S.dia}_${p.slot}.${ext}`, { type });
+}
+function guardarEnTelefono(file) { const u = URL.createObjectURL(file), a = document.createElement("a"); a.href = u; a.download = file.name; document.body.appendChild(a); a.click(); a.remove(); setTimeout(() => URL.revokeObjectURL(u), 60000); }
+function ocupar(slot, que) { if (que) S.ocupado[slot] = que; else delete S.ocupado[slot]; render(); pintarVisorAcciones(); }
+
+async function compartir(p) {
+  await copiarTexto(S.texto);
+  ocupar(p.slot, "compartir");
+  try {
+    const file = await archivoOriginal(p);
+    if (navigator.canShare?.({ files: [file] })) {
+      ocupar(p.slot);
+      await navigator.share({ files: [file], text: S.texto });
+      if (!publicadoEn(p)) toast("El texto quedó copiado: pégalo como descripción del estado.", { accion: "Ya lo publiqué", fn: () => marcar(p, true), ms: 7000 });
+      return;
+    }
+    guardarEnTelefono(file);
+    toast("Guardado en tu teléfono y texto copiado. Abre WhatsApp › Estados y elígelo de tu galería.", { ms: 7000 });
+  } catch (e) {
+    if (e.name === "AbortError") return;
+    console.error(e); window.open(p.url, "_blank");
+    toast("Se abrió el archivo: mantén presionado para guardarlo. El texto ya está copiado.", { ms: 7000 });
+  } finally { if (S.ocupado[p.slot]) ocupar(p.slot); }
+}
+async function descargar(p) {
+  ocupar(p.slot, "descargar");
+  try { guardarEnTelefono(await archivoOriginal(p)); toast(`${p.tipo === "video" ? "Video" : "Flyer"} guardado en calidad original.`); }
+  catch (e) { console.error(e); window.open(p.url, "_blank"); toast("Se abrió el archivo: mantén presionado para guardarlo.", { ms: 6000 }); }
+  finally { ocupar(p.slot); }
+}
+function marcar(p, valor) {
+  const m = leerPub();
+  if (valor) m[p.slot] = { t: Date.now(), firma: firma(p) }; else delete m[p.slot];
+  guardarPub(m); render(); pintarVisorAcciones();
+  toast(valor ? "Marcado como publicado." : "Marcado como pendiente.");
+}
+
+/* ───────── Visor ───────── */
+function abrirVisor(p) {
+  S.visor = p.slot;
+  const s = SLOTS.find(x => x.id === p.slot);
+  $("#visor").innerHTML = `<div class="visor-top"><button data-action="cerrarVisor" aria-label="Cerrar">${ic("x")}</button><div><strong>${s.nombre}</strong><span>${fechaLarga(new Date())}</span></div></div>
+    <div class="visor-media">${p.tipo === "video" ? `<video src="${esc(p.url)}" controls autoplay playsinline></video>` : `<img src="${esc(p.url)}" alt="${s.nombre}">`}</div><div class="visor-acc"></div>`;
+  pintarVisorAcciones();
+  $("#visor").classList.remove("hidden"); document.body.style.overflow = "hidden";
+  history.pushState({ visor: 1 }, "");
+}
+function pintarVisorAcciones() { const p = S.visor && S.piezas[S.visor]; const c = $("#visor .visor-acc"); if (p && c) c.innerHTML = botones(p, S.ocupado[p.slot], publicadoEn(p)); }
+function cerrarVisor(desdeAtras) { if (!S.visor) return; $("#visor video")?.pause(); $("#visor").classList.add("hidden"); $("#visor").innerHTML = ""; document.body.style.overflow = ""; S.visor = null; if (!desdeAtras) history.back(); }
+
+/* ───────── Toast ───────── */
+function toast(msg, { error = false, accion, fn, ms = 3600 } = {}) {
+  const t = $("#toast");
+  t.className = "toast" + (error ? " error" : "") + (S.visor ? " alto" : "");
+  t.innerHTML = `<span class="ic">${ic(error ? "alerta" : "check")}</span><p>${esc(msg)}</p>${accion ? `<button>${esc(accion)}</button>` : ""}`;
+  if (accion) t.querySelector("button").onclick = () => { t.classList.remove("ver"); fn?.(); };
+  requestAnimationFrame(() => t.classList.add("ver"));
+  clearTimeout(toast.t); toast.t = setTimeout(() => t.classList.remove("ver"), ms);
+}
+
+/* ───────── Eventos ───────── */
+document.addEventListener("click", async e => {
+  const b = e.target.closest("[data-action]"); if (!b) return;
+  const p = b.dataset.slot ? S.piezas[b.dataset.slot] : null;
+  switch (b.dataset.action) {
+    case "ver": if (p) abrirVisor(p); break;
+    case "cerrarVisor": cerrarVisor(); break;
+    case "compartir": if (p) compartir(p); break;
+    case "descargar": if (p) descargar(p); break;
+    case "publicado": if (p) marcar(p, !publicadoEn(p)); break;
+    case "copiar": toast((await copiarTexto(S.texto)) ? "Texto copiado. Pégalo en la descripción del estado." : "No se pudo copiar el texto.", { error: false }); break;
+    case "refrescar": cargar(true); break;
+  }
+});
+window.addEventListener("popstate", () => cerrarVisor(true));
+window.addEventListener("scroll", () => $("#topbar").classList.toggle("borde", scrollY > 6), { passive: true });
+document.addEventListener("visibilitychange", () => { if (!document.hidden && S.listo) cargar(false); });
+setInterval(() => { if (!document.hidden) { if (hoyISO() !== S.dia) { S.piezas = {}; render(); } cargar(false); } }, 5 * 60 * 1000);
+
+/* ───────── Arranque ───────── */
+$("#splashLogo").innerHTML = LOGO(76);
+$("#topMarca").innerHTML = MARCA();
+cargar(false);
+if ("serviceWorker" in navigator && (location.protocol === "https:" || location.hostname === "localhost")) navigator.serviceWorker.register("sw.js").catch(() => {});
+</script>
+</body>
+</html>
