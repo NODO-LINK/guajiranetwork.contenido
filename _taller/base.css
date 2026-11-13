@@ -1,0 +1,38 @@
+/* Guajira Network · base de diseño para flyers y video (1080×1920).
+   Uso desde _taller/hoy/:  <link rel="stylesheet" href="../base.css"> <script src="../marca.js"></script> */
+:root{
+  --indigo:#4F46E5; --indigo-700:#4338CA; --indigo-900:#1E1B4B;
+  --morado:#6D28D9; --morado-900:#2E1065;
+  --lila:#C4B5FD; --lila-200:#DDD6FE; --lila-100:#EDE9FE; --lila-50:#F5F3FF;
+  --negro:#0B0A12; --gris:#6B6880; --gris-2:#8A8798; --blanco:#FFFFFF; --wa:#25D366;
+  --deg-indigo:linear-gradient(135deg,#1E1B4B 0%,#4338CA 55%,#6D28D9 100%);
+  --deg-noche:linear-gradient(180deg,#1E1B4B 0%,#2E1065 62%,#0B0A12 100%);
+  --f:'Poppins',system-ui,sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:1080px;height:1920px;overflow:hidden;font-family:var(--f);-webkit-font-smoothing:antialiased;color:var(--negro);background:#fff}
+.lienzo{position:absolute;inset:0;overflow:hidden}
+.abs{position:absolute}
+.c{left:0;right:0;text-align:center}
+/* Zona segura de los estados de WhatsApp: contenido importante entre y=220 y y=1700 */
+.seguro{position:absolute;left:72px;right:72px;top:220px;bottom:220px}
+/* Tipografía */
+.t-xxl{font-weight:800;font-size:300px;line-height:.9;letter-spacing:-10px}
+.t-xl{font-weight:800;font-size:128px;line-height:1.02;letter-spacing:-4px}
+.t-l{font-weight:800;font-size:92px;line-height:1.05;letter-spacing:-2px}
+.t-m{font-weight:700;font-size:56px;line-height:1.12;letter-spacing:-1px}
+.t-s{font-weight:500;font-size:38px;line-height:1.3}
+.t-eti{font-weight:700;font-size:30px;letter-spacing:8px;text-transform:uppercase}
+.acento{color:var(--indigo)} .lila{color:var(--lila)} .blanco{color:#fff}
+/* Piezas de marca (las genera marca.js) */
+.gn-marca{display:inline-flex;align-items:center;gap:20px}
+.gn-marca .wm{display:flex;flex-direction:column;line-height:1}
+.gn-marca .wm b{font-weight:800;letter-spacing:.045em}
+.gn-marca .wm span{font-weight:600;letter-spacing:.5em;margin-top:.32em}
+.gn-legal{position:absolute;left:0;right:0;top:1640px;text-align:center;font-weight:600;font-size:23px;letter-spacing:1.4px;line-height:38px}
+.gn-wa{display:inline-flex;align-items:center;gap:22px;padding:26px 40px 26px 26px;border-radius:999px;background:#fff;box-shadow:0 30px 60px -30px rgba(11,10,18,.5)}
+.gn-wa i{width:88px;height:88px;border-radius:50%;background:#ECFDF3;display:grid;place-items:center;font-style:normal}
+.gn-wa small{display:block;font-size:22px;font-weight:700;letter-spacing:3px;color:var(--gris)}
+.gn-wa strong{display:block;font-size:58px;font-weight:800;color:var(--negro);line-height:1.1}
+.tarjeta{background:#fff;border-radius:48px;box-shadow:0 40px 80px -40px rgba(46,16,101,.45)}
+.pill{display:inline-flex;align-items:center;gap:12px;height:72px;padding:0 34px;border-radius:999px;font-weight:700;font-size:30px;letter-spacing:4px}

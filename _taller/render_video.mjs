@@ -9,5 +9,12 @@ const b = await chromium.launch({ executablePath: '/usr/bin/google-chrome' });
 const p = await b.newPage({ viewport: { width: 1080, height: 1920 } });
 await p.goto('file://' + path.resolve(html)); await p.evaluate(() => document.fonts.ready);
 const N = Math.round(+dur * 30);
-for (let i = 0; i < N; i++) { await p.evaluate(t => window.render(t), i / 30); await p.screenshot({ path: `${out}/${String(i).padStart(4, '0')}.png` }); }
+await p.addScriptTag({ path: path.join(path.dirname(new URL(import.meta.url).pathname), 'revisar.js') });
+const avisos = new Set();
+for (let i = 0; i < N; i++) {
+  const t = i / 30; await p.evaluate(t => window.render(t), t);
+  if (i % 15 === 0 && t > .8 && t < +dur - .8) (await p.evaluate(() => window.__revisar())).forEach(x => avisos.add(`${x} (≈${t.toFixed(1)} s)`));
+  await p.screenshot({ path: `${out}/${String(i).padStart(4, '0')}.png` });
+}
+console.log(avisos.size ? 'REVISIÓN VIDEO ⚠\n  ' + [...avisos].slice(0, 25).join('\n  ') : 'Revisión del video OK');
 await b.close(); console.log('frames:', N);

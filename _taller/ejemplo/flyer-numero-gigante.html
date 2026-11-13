@@ -1,0 +1,19 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><link rel="stylesheet" href="../base.css"><script src="../marca.js"></script></head>
+<body><div class="lienzo" style="background:var(--deg-noche)">
+  <div id="hilos"></div>
+  <div class="abs" style="left:72px;top:250px" id="m"></div>
+  <div class="abs t-eti lila" style="left:72px;top:500px">Plan 2 · Fibra óptica</div>
+  <div class="abs blanco" style="left:56px;top:540px;font-weight:800;font-size:400px;line-height:1;letter-spacing:-18px">600</div>
+  <div class="abs blanco t-l" style="left:78px;top:930px">Mbps</div>
+  <div class="abs t-s" style="left:78px;top:1050px;color:rgba(255,255,255,.82)">El doble de velocidad del Plan 1</div>
+  <div class="abs tarjeta" style="left:72px;top:1150px;width:430px;height:170px;display:flex;align-items:center;justify-content:center">
+    <span style="font-weight:800;font-size:104px;color:var(--indigo-700)">$25</span><span style="font-weight:600;font-size:40px;color:var(--gris);margin:34px 0 0 8px">/mes</span></div>
+  <div class="abs" style="left:72px;top:1390px" id="wa"></div>
+  <div id="legal"></div>
+</div>
+<script>
+document.getElementById("hilos").innerHTML = GN.hilos({ y: 1180, amp: 260, n: 4, op: .35, sep: 42 });
+document.getElementById("m").innerHTML = GN.marca("oscuro", 86);
+document.getElementById("wa").innerHTML = GN.contacto("atencion");
+document.getElementById("legal").innerHTML = GN.legal("oscuro");
+</script></body></html>

@@ -31,5 +31,18 @@ Al lado: **GUAJIRA** (Poppins 800, negro sobre claro / blanco sobre oscuro) y de
 - Formato: **1080×1920** (estado de WhatsApp). Zona segura: contenido importante entre y=220 y y=1700.
 - Mucho contraste, una sola idea por pieza, números grandes, máximo ~20 palabras visibles por flyer.
 
-## Banco de temas (rotar; ver historial.md para no repetir)
-Plan 1 · Plan 2 · comparar planes · "fibra óptica hasta tu casa" · soporte e instalación (0414) · atención al cliente: pagos / cambios de plan / consultas (0424) · reporta tu pago en guajiranetwork.ve · síguenos en IG · cobertura en San Rafael de El Moján · el eslogan · recordatorio de pago (solo días 1–3) · "¿falla? escríbenos" · "cámbiate al Plan 2" · fechas especiales reales (Navidad, Año Nuevo, Día de la Madre, etc.) usando solo los datos de arriba.
+## Banco de temas
+Está en `plan_del_dia.py` (23 ángulos con ideas y ganchos): planes, comparar, cambio de plan, fibra, cobertura, instalación, soporte, 3 consejos útiles (reinicio, ubicación del router, clave WiFi), atención al cliente, reportar pago en la web, pago en $ o Bs, recordatorio de pago (días 1–3), usos (casa, gamer, familia), Instagram, web, correo, empresa habilitada por CONATEL y eslogan. El plan los rota y también marca las fechas especiales.
+
+## Voz y tono
+- Español de Venezuela, cercano y claro; un toque zuliano cuando el plan diga "cercano" ("¿Qué más, vecino?", "Pendiente con…"). Nada de groserías ni de jerga forzada.
+- Frases cortas, verbos de acción ("Escríbenos", "Elige", "Reporta"). Tildes y signos de apertura siempre (¿ ¡).
+- Los consejos (reinicio, router, clave) ayudan de verdad: primero se ayuda, después se vende.
+- Para fechas especiales: saludo cálido + dato de la marca, sin política ni religión ni imágenes religiosas.
+- Prohibido el relleno genérico ("la mejor opción", "calidad garantizada", "somos los número 1", "velocidad increíble").
+
+## Qué hace que una pieza NO sea genérica
+- Un dato concreto de la marca (300/600 Mbps, $20/$25, 0414/0424, San Rafael de El Moján, guajiranetwork.ve) es el protagonista.
+- El hilo de fibra aparece de forma distinta cada día (marco, subrayado, camino del texto, transición, luz que recorre).
+- La composición nace del layout del plan, no de la plantilla de ayer.
+- Música con estilo propio cada día (dembow, gaita, lo-fi, house, trap, electro), sincronizada con lo que se mueve.

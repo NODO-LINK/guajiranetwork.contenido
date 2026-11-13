@@ -8,6 +8,9 @@ const b = await chromium.launch({ executablePath: '/usr/bin/google-chrome' });
 const p = await b.newPage({ viewport: { width: 1080, height: 1920 } });
 for (const [i, f] of args.entries()) {
   await p.goto('file://' + path.resolve(f)); await p.evaluate(() => document.fonts.ready); await p.waitForTimeout(200);
+  await p.addScriptTag({ path: path.join(path.dirname(new URL(import.meta.url).pathname), 'revisar.js') });
+  const prob = await p.evaluate(() => window.__revisar());
+  console.log(`flyer${i + 1}: ` + (prob.length ? '⚠ ' + prob.join(' | ') : 'revisión OK'));
   await p.screenshot({ path: `${out}/flyer${i + 1}.jpg`, type: 'jpeg', quality: 95 });
 }
 await b.close(); console.log('flyers:', args.length);

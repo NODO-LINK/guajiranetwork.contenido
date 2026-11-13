@@ -1,0 +1,23 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><link rel="stylesheet" href="../base.css"><script src="../marca.js"></script>
+<style>
+.paso{position:absolute;left:72px;right:72px;display:flex;align-items:center;gap:34px;padding:34px 40px;border-radius:40px;background:#fff;box-shadow:0 24px 50px -30px rgba(46,16,101,.35)}
+.paso b{flex:none;width:96px;height:96px;border-radius:30px;background:var(--indigo);color:#fff;display:grid;place-items:center;font-size:52px;font-weight:800}
+.paso span{font-size:40px;font-weight:600;line-height:1.25;color:var(--negro)}
+</style></head>
+<body><div class="lienzo" style="background:linear-gradient(180deg,#F5F3FF 0%,#EDE9FE 100%)">
+  <div id="hilos"></div>
+  <div class="abs" style="left:72px;top:250px" id="m"></div>
+  <div class="abs t-eti" style="left:72px;top:470px;color:var(--morado)">Consejo de soporte</div>
+  <div class="abs t-xl" style="left:72px;top:520px">¿Internet<br>lento?</div>
+  <div class="abs t-m acento" style="left:72px;top:800px">Prueba esto primero</div>
+  <div class="paso" style="top:920px"><b>1</b><span>Apaga el router 30 segundos y vuelve a encenderlo</span></div>
+  <div class="paso" style="top:1100px"><b>2</b><span>Revisa que los cables estén bien conectados</span></div>
+  <div class="paso" style="top:1280px"><b>3</b><span>Acércate al router y prueba de nuevo</span></div>
+  <div class="abs t-s" style="left:72px;top:1470px;font-weight:600">¿Sigue igual? Escríbenos: <span class="acento" style="font-weight:800">0414-3666377</span></div>
+  <div id="legal"></div>
+</div>
+<script>
+document.getElementById("hilos").innerHTML = GN.hilos({ y: 420, amp: 200, n: 3, color: "#8B7CF6", op: .25 });
+document.getElementById("m").innerHTML = GN.marca("claro", 86);
+document.getElementById("legal").innerHTML = GN.legal("claro", 1600);
+</script></body></html>

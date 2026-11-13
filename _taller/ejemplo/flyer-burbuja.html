@@ -1,0 +1,24 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><link rel="stylesheet" href="../base.css"><script src="../marca.js"></script>
+<style>
+.bur{position:absolute;padding:40px 46px;font-size:46px;line-height:1.3;font-weight:600}
+.cli{left:72px;width:760px;background:#fff;color:var(--negro);border-radius:48px 48px 48px 12px}
+.gn{right:72px;width:820px;background:var(--lila);color:var(--indigo-900);border-radius:48px 48px 12px 48px}
+.quien{position:absolute;font-size:24px;font-weight:700;letter-spacing:4px}
+</style></head>
+<body><div class="lienzo" style="background:var(--deg-indigo)">
+  <div id="hilos"></div>
+  <div class="abs" style="left:72px;top:250px" id="m"></div>
+  <div class="abs t-l blanco" style="left:72px;top:450px">Estamos para<br>atenderte</div>
+  <div class="quien" style="left:84px;top:740px;color:rgba(255,255,255,.7)">TÚ</div>
+  <div class="bur cli" style="top:782px">¿Cómo hago para cambiarme de plan?</div>
+  <div class="quien" style="right:84px;top:1010px;color:var(--lila)">GUAJIRA NETWORK</div>
+  <div class="bur gn" style="top:1052px">¡Escríbenos por WhatsApp! Te ayudamos con pagos, cambios de plan y consultas.</div>
+  <div class="abs" style="left:72px;top:1400px" id="wa"></div>
+  <div id="legal"></div>
+</div>
+<script>
+document.getElementById("hilos").innerHTML = GN.hilos({ y: 1500, amp: 240, n: 3, op: .3 });
+document.getElementById("m").innerHTML = GN.marca("oscuro", 86);
+document.getElementById("wa").innerHTML = GN.contacto("atencion");
+document.getElementById("legal").innerHTML = GN.legal("oscuro");
+</script></body></html>
