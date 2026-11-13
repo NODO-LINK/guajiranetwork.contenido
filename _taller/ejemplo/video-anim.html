@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html><head><meta charset="utf-8">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:1080px;height:1920px;overflow:hidden;background:#0B0A12;font-family:Poppins,sans-serif}
+.esc{position:absolute;inset:0;overflow:hidden;display:none}
+.abs{position:absolute}
+.c{left:0;right:0;text-align:center}
+.legal{position:absolute;left:0;right:0;top:1615px;text-align:center;font-size:22px;font-weight:600;letter-spacing:1.6px;line-height:36px}
+.mk{position:absolute;left:0;right:0;top:220px;display:flex;justify-content:center;align-items:center;gap:20px}
+.mk .wm{display:flex;flex-direction:column;line-height:1}
+.mk .wm b{font-weight:800;font-size:36px;letter-spacing:1.6px}
+.mk .wm span{font-weight:600;font-size:17px;letter-spacing:9.3px;margin-top:8px}
+#wipe{position:absolute;top:-600px;width:2200px;height:3200px;left:0;background:linear-gradient(90deg,rgba(196,181,253,0) 0%,#C4B5FD 18%,#4F46E5 45%,#6D28D9 75%,rgba(109,40,217,0) 100%);transform-origin:center}
+.card{position:absolute;left:120px;width:840px;height:210px;border-radius:44px;background:#fff;display:flex;align-items:center;gap:28px;padding:0 50px;box-shadow:0 30px 60px -30px rgba(0,0,0,.6)}
+.card .wa{width:116px;height:116px;border-radius:50%;background:#ECFDF3;display:grid;place-items:center;flex:none}
+.card small{display:block;font-size:26px;font-weight:700;letter-spacing:3px;color:#6B6880}
+.card strong{display:block;font-size:68px;font-weight:800;color:#0B0A12;line-height:1.1}
+</style></head>
+<body>
+<svg width="0" height="0" style="position:absolute"><defs>
+  <symbol id="logo" viewBox="0 0 64 64"><rect width="64" height="64" rx="16" fill="#4F46E5"/><path d="M17 19l13 13-13 13" fill="none" stroke="#C4B5FD" stroke-width="7.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M33 19l13 13-13 13" fill="none" stroke="#fff" stroke-width="7.5" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="wa" viewBox="0 0 24 24"><path fill="#25D366" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm5.8 14.1c-.2.7-1.4 1.3-2 1.4-.5.1-1.2.1-1.9-.1a17 17 0 0 1-1.7-.6 13.4 13.4 0 0 1-5.1-4.5c-.4-.5-1-1.5-1-2.8 0-1.3.7-2 1-2.3.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.3.5-.4.4c-.1.1-.3.3-.1.6.2.3.7 1.2 1.6 2a7.3 7.3 0 0 0 2.3 1.4c.3.1.5.1.6-.1l.9-1.1c.2-.3.4-.2.6-.1l1.9.9c.3.1.5.2.5.3.1.1.1.7-.1 1.3Z"/></symbol>
+  <linearGradient id="gf" x1="0" x2="1"><stop offset="0" stop-color="#C4B5FD" stop-opacity="0"/><stop offset=".3" stop-color="#C4B5FD"/><stop offset=".7" stop-color="#8B7CF6"/><stop offset="1" stop-color="#6D28D9"/></linearGradient>
+  <filter id="glow" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="14"/></filter>
+</defs></svg>
+
+<!-- ESCENA 1: el hilo + logo -->
+<div class="esc" id="e1" style="background:linear-gradient(180deg,#1E1B4B 0%,#2E1065 62%,#0B0A12 100%)">
+  <svg class="abs" style="left:0;top:0" width="1080" height="1920">
+    <g id="hilo1">
+      <path id="h1g" d="M-80 1260 C 260 1000, 520 1520, 1160 1040" fill="none" stroke="#A78BFA" stroke-width="22" filter="url(#glow)" opacity=".75"/>
+      <path id="h1" d="M-80 1260 C 260 1000, 520 1520, 1160 1040" fill="none" stroke="url(#gf)" stroke-width="7" stroke-linecap="round"/>
+      <path id="h1b" d="M-80 1310 C 300 1060, 560 1570, 1160 1100" fill="none" stroke="#C4B5FD" stroke-opacity=".35" stroke-width="3"/>
+      <path id="h1c" d="M-80 1360 C 340 1120, 600 1620, 1160 1160" fill="none" stroke="#C4B5FD" stroke-opacity=".2" stroke-width="3"/>
+      <circle id="chispa" r="12" fill="#fff"/>
+    </g>
+  </svg>
+  <svg id="logoGrande" class="abs" style="left:420px;top:520px" width="240" height="240"><use href="#logo"/></svg>
+  <div class="abs c" id="gua" style="top:820px;font-size:104px;font-weight:800;letter-spacing:6px;color:#fff">GUAJIRA</div>
+  <div class="abs c" id="net" style="top:950px;font-size:44px;font-weight:600;letter-spacing:26px;color:#C4B5FD;padding-left:26px">NETWORK</div>
+  <div class="abs c" id="slo" style="top:1080px;font-size:46px;font-weight:500;font-style:italic;color:rgba(255,255,255,.88)">El hilo que conecta a la Guajira</div>
+  <div class="legal" style="color:#8F8CA3">GUAJIRA NETWORK 2107, C.A. · RIF J-50842197-3<br>Habilitado por CONATEL · HGST-00852</div>
+</div>
+
+<!-- ESCENA 2: Plan 1 -->
+<div class="esc" id="e2" style="background:#fff">
+  <div class="abs" style="inset:0;background:radial-gradient(60% 40% at 90% 5%,rgba(109,40,217,.16),transparent 70%)"></div>
+  <svg class="abs" style="left:0;top:0" width="1080" height="1920"><g id="f2" fill="none" stroke="#DDD6FE" stroke-width="3"><path d="M-80 1420 C 300 1200, 620 1640, 1160 1260"/><path d="M-80 1470 C 340 1260, 660 1690, 1160 1320" opacity=".6"/></g></svg>
+  <div class="mk"><svg width="70" height="70"><use href="#logo"/></svg><div class="wm"><b style="color:#0B0A12">GUAJIRA</b><span style="color:#8A8798">NETWORK</span></div></div>
+  <div class="abs c" id="p2l" style="top:560px;font-size:40px;font-weight:700;letter-spacing:12px;color:#6D28D9">PLAN 1 · FIBRA ÓPTICA</div>
+  <div class="abs c" id="p2n" style="top:640px;font-size:330px;font-weight:800;letter-spacing:-12px;color:#0B0A12;line-height:1">0</div>
+  <div class="abs c" id="p2m" style="top:990px;font-size:96px;font-weight:700;color:#0B0A12">Mbps</div>
+  <div class="abs" id="p2p" style="left:290px;top:1170px;width:500px;height:170px;border-radius:85px;background:#F5F3FF;border:3px solid #DDD6FE;display:flex;align-items:center;justify-content:center;font-size:96px;font-weight:800;color:#4338CA">$20<span style="font-size:44px;font-weight:600;color:#6B6880;margin-left:6px;margin-top:26px">/mes</span></div>
+  <div class="legal" style="color:#9A97AD">GUAJIRA NETWORK 2107, C.A. · RIF J-50842197-3<br>Habilitado por CONATEL · HGST-00852</div>
+</div>
+
+<!-- ESCENA 3: Plan 2 -->
+<div class="esc" id="e3" style="background:linear-gradient(135deg,#1E1B4B 0%,#4338CA 55%,#6D28D9 100%)">
+  <svg class="abs" style="left:0;top:0" width="1080" height="1920"><g id="f3" fill="none" stroke="#C4B5FD" stroke-opacity=".28" stroke-width="3"><path d="M-80 1420 C 300 1200, 620 1640, 1160 1260"/><path d="M-80 1470 C 340 1260, 660 1690, 1160 1320" opacity=".6"/></g></svg>
+  <div class="mk"><svg width="70" height="70"><use href="#logo"/></svg><div class="wm"><b style="color:#fff">GUAJIRA</b><span style="color:#C4B5FD">NETWORK</span></div></div>
+  <div class="abs c" id="p3l" style="top:560px;font-size:40px;font-weight:700;letter-spacing:12px;color:#C4B5FD">PLAN 2 · FIBRA ÓPTICA</div>
+  <div class="abs c" id="p3n" style="top:640px;font-size:330px;font-weight:800;letter-spacing:-12px;color:#fff;line-height:1">0</div>
+  <div class="abs c" id="p3m" style="top:990px;font-size:96px;font-weight:700;color:#fff">Mbps</div>
+  <div class="abs" id="p3p" style="left:290px;top:1170px;width:500px;height:170px;border-radius:85px;background:#fff;display:flex;align-items:center;justify-content:center;font-size:96px;font-weight:800;color:#4338CA">$25<span style="font-size:44px;font-weight:600;color:#6B6880;margin-left:6px;margin-top:26px">/mes</span></div>
+  <div class="legal" style="color:#C4B5FD">GUAJIRA NETWORK 2107, C.A. · RIF J-50842197-3<br>Habilitado por CONATEL · HGST-00852</div>
+</div>
+
+<!-- ESCENA 4: contacto -->
+<div class="esc" id="e4" style="background:linear-gradient(180deg,#1E1B4B 0%,#2E1065 62%,#0B0A12 100%)">
+  <svg class="abs" style="left:0;top:0" width="1080" height="1920"><g id="f4" fill="none" stroke="#C4B5FD" stroke-opacity=".25" stroke-width="3"><path d="M-80 1480 C 300 1260, 620 1700, 1160 1320"/><path d="M-80 1530 C 340 1320, 660 1750, 1160 1380" opacity=".6"/></g></svg>
+  <div class="mk"><svg width="70" height="70"><use href="#logo"/></svg><div class="wm"><b style="color:#fff">GUAJIRA</b><span style="color:#C4B5FD">NETWORK</span></div></div>
+  <div class="abs c" id="p4t" style="top:450px;font-size:100px;font-weight:800;letter-spacing:-2px;color:#fff">Escríbenos</div>
+  <div class="abs c" id="p4s" style="top:590px;font-size:40px;font-weight:500;color:#C4B5FD">San Rafael de El Moján</div>
+  <div class="card" id="c1" style="top:740px"><span class="wa"><svg width="76" height="76"><use href="#wa"/></svg></span><div><small>ATENCIÓN AL CLIENTE</small><strong>0424-4825404</strong></div></div>
+  <div class="card" id="c2" style="top:1000px"><span class="wa"><svg width="76" height="76"><use href="#wa"/></svg></span><div><small>SOPORTE E INSTALACIÓN</small><strong>0414-3666377</strong></div></div>
+  <div class="abs c" id="p4i" style="top:1300px;font-size:40px;font-weight:600;color:#fff">@guajiranetwork</div>
+  <div class="legal" style="color:#8F8CA3">GUAJIRA NETWORK 2107, C.A. · RIF J-50842197-3<br>Habilitado por CONATEL · HGST-00852</div>
+</div>
+
+<div id="wipe"></div>
+<div id="negro" class="abs" style="inset:0;background:#000;opacity:0;pointer-events:none"></div>
+
+<script>
+const $ = id => document.getElementById(id);
+const cl = (x, a = 0, b = 1) => Math.min(b, Math.max(a, x));
+const prog = (t, a, b) => cl((t - a) / (b - a));
+const eOut = x => 1 - Math.pow(1 - x, 3);
+const eInOut = x => x < .5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2;
+const eBack = x => { const c1 = 1.70158, c3 = c1 + 1; return 1 + c3 * Math.pow(x - 1, 3) + c1 * Math.pow(x - 1, 2); };
+function entra(el, t, a, d = .45, dy = 60) { const p = eOut(prog(t, a, a + d)); el.style.opacity = p; el.style.transform = `translateY(${(1 - p) * dy}px)`; }
+function pop(el, t, a, d = .4) { const p = prog(t, a, a + d); const s = p === 0 ? 0 : eBack(p); el.style.opacity = cl(p * 3); el.style.transform = `scale(${s})`; }
+const L1 = 1700;
+function render(t) {
+  const esc = t < 3 ? 1 : t < 6 ? 2 : t < 9 ? 3 : 4;
+  for (let i = 1; i <= 4; i++) $("e" + i).style.display = i === esc ? "block" : "none";
+  // Escena 1
+  if (esc === 1) {
+    const d = eInOut(prog(t, .1, 1.3));
+    for (const id of ["h1", "h1g", "h1b", "h1c"]) { const p = $(id); p.style.strokeDasharray = L1; p.style.strokeDashoffset = L1 * (1 - eInOut(prog(t, id === "h1" || id === "h1g" ? .1 : .3, id === "h1" || id === "h1g" ? 1.3 : 1.6))); }
+    const pt = $("h1").getPointAtLength(L1 * d * .98); $("chispa").setAttribute("cx", pt.x); $("chispa").setAttribute("cy", pt.y); $("chispa").style.opacity = d > 0 && d < 1 ? 1 : 0;
+    $("hilo1").style.transform = `translateY(${-Math.sin(t * 1.4) * 8}px)`;
+    const lg = $("logoGrande"); const pl = prog(t, .95, 1.4); lg.style.opacity = cl(pl * 3); lg.style.transform = `scale(${pl ? eBack(pl) : 0}) rotate(${(1 - eOut(pl)) * -12}deg)`;
+    entra($("gua"), t, 1.3, .45, 50);
+    const pn = eOut(prog(t, 1.55, 2.2)); $("net").style.opacity = pn; $("net").style.letterSpacing = (60 - 34 * pn) + "px";
+    entra($("slo"), t, 2.0, .5, 30);
+  }
+  if (esc === 2 || esc === 3) {
+    const k = esc, t0 = k === 2 ? 3 : 6, meta = k === 2 ? 300 : 600;
+    entra($(`p${k}l`), t, t0 + .2, .4, 40);
+    const pc = eOut(prog(t, t0 + .3, t0 + 1.2)); const n = $(`p${k}n`); n.textContent = Math.round(meta * pc); n.style.opacity = cl(prog(t, t0 + .25, t0 + .4)); n.style.transform = `scale(${.92 + .08 * pc})`;
+    entra($(`p${k}m`), t, t0 + .6, .4, 40);
+    pop($(`p${k}p`), t, t0 + 1.5, .45);
+    $(`f${k}`).style.transform = `translateX(${-(t - t0) * 30}px)`;
+  }
+  if (esc === 4) {
+    entra($("p4t"), t, 9.15, .45, 50); entra($("p4s"), t, 9.3, .45, 30);
+    for (const [id, a] of [["c1", 9.5], ["c2", 10.0]]) { const p = eOut(prog(t, a, a + .5)); $(id).style.opacity = p; $(id).style.transform = `translateX(${(1 - p) * 700}px)`; }
+    entra($("p4i"), t, 10.5, .4, 30);
+    $("f4").style.transform = `translateX(${-(t - 9) * 30}px)`;
+  }
+  // Barrido del "hilo" entre escenas (centrado en 3, 6 y 9 s)
+  const w = $("wipe"); let vis = false;
+  for (const c of [3, 6, 9]) { const p = prog(t, c - .28, c + .28); if (p > 0 && p < 1) { vis = true; const x = -2400 + eInOut(p) * 4000; w.style.transform = `translateX(${x}px) rotate(-14deg)`; } }
+  w.style.display = vis ? "block" : "none";
+  $("negro").style.opacity = prog(t, 12.0, 12.5);
+}
+window.render = render;
+</script>
+</body></html>
