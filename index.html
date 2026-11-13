@@ -367,7 +367,23 @@ const botones = (p, ocup, t) => `<button class="btn btn-wa" data-action="compart
 const vacia = s => `<div class="vacia"><span class="ic">${ic(s.tipo === "video" ? "video" : "imagen")}</span><div><strong>${s.nombre}</strong><p>Aún no está listo. Toca ↻ para revisar.</p></div></div>`;
 
 /* ───────── Acciones ───────── */
+/* Dentro del APK existe window.GNAndroid: comparte el archivo original directo a WhatsApp y lo guarda en la galería */
+const NATIVO = window.GNAndroid || null;
+function nativo(metodo, ...args) {
+  return new Promise(res => {
+    const id = "c" + Date.now() + Math.floor(Math.random() * 1e6);
+    const gn = (window.__gn = window.__gn || {});
+    gn[id] = r => { delete gn[id]; res(r || { ok: false }); };
+    setTimeout(() => gn[id] && gn[id]({ ok: false, msg: "tiempo" }), 180000);
+    try { NATIVO[metodo](id, ...args); } catch (e) { gn[id]({ ok: false, msg: String(e) }); }
+  });
+}
+const extDe = p => p.archivo.split(".").pop().toLowerCase();
+const mimeDe = p => p.tipo === "video" ? (extDe(p) === "mov" ? "video/quicktime" : "video/mp4") : extDe(p) === "png" ? "image/png" : "image/jpeg";
+const nombreDe = p => `GuajiraNetwork_${S.dia}_${p.slot}.${extDe(p)}`;
+const absoluta = u => new URL(u, location.href).href;
 async function copiarTexto(t) {
+  if (NATIVO) { try { NATIVO.copiar(t); return true; } catch {} }
   try { await navigator.clipboard.writeText(t); return true; }
   catch { const a = document.createElement("textarea"); a.value = t; a.style.cssText = "position:fixed;opacity:0"; document.body.appendChild(a); a.select(); let ok = false; try { ok = document.execCommand("copy"); } catch {} a.remove(); return ok; }
 }
@@ -376,9 +392,7 @@ async function archivoOriginal(p) {
   const r = await fetch(p.url, { cache: "no-store" });
   if (!r.ok) throw new Error("HTTP " + r.status);
   const blob = await r.blob();
-  const ext = p.archivo.split(".").pop().toLowerCase();
-  const type = blob.type || p.mime || (p.tipo === "video" ? "video/mp4" : ext === "png" ? "image/png" : "image/jpeg");
-  return new File([blob], `GuajiraNetwork_${S.dia}_${p.slot}.${ext}`, { type });
+  return new File([blob], nombreDe(p), { type: mimeDe(p) });
 }
 function guardarEnTelefono(file) { const u = URL.createObjectURL(file), a = document.createElement("a"); a.href = u; a.download = file.name; document.body.appendChild(a); a.click(); a.remove(); setTimeout(() => URL.revokeObjectURL(u), 60000); }
 function ocupar(slot, que) { if (que) S.ocupado[slot] = que; else delete S.ocupado[slot]; render(); pintarVisorAcciones(); }
@@ -386,6 +400,13 @@ function ocupar(slot, que) { if (que) S.ocupado[slot] = que; else delete S.ocupa
 async function compartir(p) {
   await copiarTexto(S.texto);
   ocupar(p.slot, "compartir");
+  if (NATIVO) {
+    const r = await nativo("compartir", absoluta(p.url), nombreDe(p), mimeDe(p), S.texto);
+    ocupar(p.slot);
+    if (r.ok) toast("Elige WhatsApp › Mi estado y toca HD antes de publicar. El texto ya está copiado.", { accion: publicadoEn(p) ? null : "Ya lo publiqué", fn: () => marcar(p, true), ms: 8000 });
+    else toast("No se pudo preparar el archivo. Revisa tu conexión e inténtalo de nuevo.", { error: true });
+    return;
+  }
   try {
     const file = await archivoOriginal(p);
     if (navigator.canShare?.({ files: [file] })) {
@@ -404,6 +425,14 @@ async function compartir(p) {
 }
 async function descargar(p) {
   ocupar(p.slot, "descargar");
+  if (NATIVO) {
+    const r = await nativo("descargar", absoluta(p.url), nombreDe(p), mimeDe(p));
+    ocupar(p.slot);
+    if (r.ok) toast(`Descargando en calidad original a ${r.msg}.`);
+    else if (r.msg === "permiso") toast("Acepta el permiso de almacenamiento y vuelve a tocar Descargar.");
+    else toast("No se pudo descargar. Revisa tu conexión.", { error: true });
+    return;
+  }
   try { guardarEnTelefono(await archivoOriginal(p)); toast(`${p.tipo === "video" ? "Video" : "Flyer"} guardado en calidad original.`); }
   catch (e) { console.error(e); window.open(p.url, "_blank"); toast("Se abrió el archivo: mantén presionado para guardarlo.", { ms: 6000 }); }
   finally { ocupar(p.slot); }
