@@ -52,5 +52,32 @@
   "tono": [
    "cercano"
   ]
+ },
+ "2026-11-15": {
+  "angulos": [
+   "empresa_local",
+   "usos_casa",
+   "usd_bs",
+   "consejo_reinicio"
+  ],
+  "video": [
+   "zoom_tunel"
+  ],
+  "musica": [
+   "dembow"
+  ],
+  "layouts": [
+   "poster_tipografico",
+   "banda_diagonal",
+   "burbuja_mensaje"
+  ],
+  "paletas": [
+   "claro_lila",
+   "noche",
+   "degradado_indigo"
+  ],
+  "tono": [
+   "entusiasta"
+  ]
  }
 }
