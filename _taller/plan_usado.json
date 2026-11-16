@@ -79,5 +79,32 @@
   "tono": [
    "entusiasta"
   ]
+ },
+ "2026-11-16": {
+  "angulos": [
+   "cambio_plan",
+   "cobertura",
+   "consejo_clave",
+   "reporta_pago"
+  ],
+  "video": [
+   "velocimetro"
+  ],
+  "musica": [
+   "trap"
+  ],
+  "layouts": [
+   "noche_neon",
+   "minimal_blanco",
+   "numero_gigante"
+  ],
+  "paletas": [
+   "morado_intenso",
+   "blanco_negro_acento",
+   "degradado_indigo"
+  ],
+  "tono": [
+   "util"
+  ]
  }
 }
