@@ -106,5 +106,32 @@
   "tono": [
    "util"
   ]
+ },
+ "2026-11-17": {
+  "angulos": [
+   "consejo_router",
+   "correo",
+   "plan2",
+   "fibra"
+  ],
+  "video": [
+   "tipografia_cinetica"
+  ],
+  "musica": [
+   "house"
+  ],
+  "layouts": [
+   "titular_editorial",
+   "comparativa_columnas",
+   "lista_checks"
+  ],
+  "paletas": [
+   "noche",
+   "lila_suave",
+   "claro_lila"
+  ],
+  "tono": [
+   "directo"
+  ]
  }
 }
