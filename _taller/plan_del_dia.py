@@ -115,7 +115,7 @@ def especial(d):
     y = d.year
     fijos = {(1, 1): "Año Nuevo", (12, 31): "Fin de año", (12, 24): "Nochebuena", (12, 25): "Navidad",
              (2, 14): "Día del Amor y la Amistad", (5, 1): "Día del Trabajador", (5, 17): "Día Mundial del Internet",
-             (11, 18): "Feria en el Zulia (saludo festivo zuliano, sin imágenes ni referencias religiosas)"}
+             (11, 18): "Día de la Chinita (Virgen de Chiquinquirá, patrona del Zulia): saludo respetuoso y festivo; usa el material que el dueño deje en _taller/especiales/"}
     if (d.month, d.day) in fijos: return fijos[(d.month, d.day)]
     if d == nth_weekday(y, 5, 6, 2): return "Día de la Madre"
     if d == nth_weekday(y, 6, 6, 3): return "Día del Padre"

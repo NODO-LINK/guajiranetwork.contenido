@@ -4,6 +4,11 @@
 `video.mp4` · `flyer1.jpg` · `flyer2.jpg` · `flyer3.jpg` · `texto.txt` (mismos nombres; reemplazan a los de ayer).
 **Estándar:** que parezca hecho por un diseñador profesional de la marca, distinto a los días anteriores y útil para el cliente.
 
+## 0. Piezas especiales del dueño (revisar primero)
+Si existe la carpeta `_taller/especiales/AAAA-MM-DD/` con la fecha de hoy, cópiala tal cual a `contenido/`
+(`flyer1.jpg`, `flyer2.jpg`, `flyer3.jpg`, `video.mp4` o `texto.txt`, según lo que haya) y **no reemplaces esas piezas**.
+Lee su `LEEME.md` y produce solo lo que falte, alineado con esa fecha (mismo tema y tono).
+
 ## 1. Plan del día (obligatorio)
 ```bash
 python3 _taller/plan_del_dia.py            # imprime el brief de hoy (no guarda)

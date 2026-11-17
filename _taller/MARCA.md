@@ -38,7 +38,7 @@ Está en `plan_del_dia.py` (23 ángulos con ideas y ganchos): planes, comparar, 
 - Español de Venezuela, cercano y claro; un toque zuliano cuando el plan diga "cercano" ("¿Qué más, vecino?", "Pendiente con…"). Nada de groserías ni de jerga forzada.
 - Frases cortas, verbos de acción ("Escríbenos", "Elige", "Reporta"). Tildes y signos de apertura siempre (¿ ¡).
 - Los consejos (reinicio, router, clave) ayudan de verdad: primero se ayuda, después se vende.
-- Para fechas especiales: saludo cálido + dato de la marca, sin política ni religión ni imágenes religiosas.
+- Para fechas especiales: saludo cálido + dato de la marca, sin política. Fechas religiosas tradicionales del Zulia (como el Día de la Chinita) solo con saludo respetuoso; no dibujes imágenes religiosas: usa el material que el dueño deje en `_taller/especiales/`.
 - Prohibido el relleno genérico ("la mejor opción", "calidad garantizada", "somos los número 1", "velocidad increíble").
 
 ## Qué hace que una pieza NO sea genérica
