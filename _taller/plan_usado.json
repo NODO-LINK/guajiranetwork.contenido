@@ -133,5 +133,32 @@
   "tono": [
    "directo"
   ]
+ },
+ "2026-11-18": {
+  "angulos": [
+   "usos_gamer",
+   "instagram",
+   "comparar",
+   "soporte"
+  ],
+  "video": [
+   "mosaico"
+  ],
+  "musica": [
+   "lofi"
+  ],
+  "layouts": [
+   "pasos_numerados",
+   "tarjeta_central",
+   "poster_tipografico"
+  ],
+  "paletas": [
+   "degradado_indigo",
+   "morado_intenso",
+   "blanco_negro_acento"
+  ],
+  "tono": [
+   "festivo"
+  ]
  }
 }
