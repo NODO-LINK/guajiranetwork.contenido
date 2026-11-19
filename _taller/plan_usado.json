@@ -145,7 +145,7 @@
    "mosaico"
   ],
   "musica": [
-   "lofi"
+   "gaitera"
   ],
   "layouts": [
    "pasos_numerados",
@@ -159,6 +159,33 @@
   ],
   "tono": [
    "festivo"
+  ]
+ },
+ "2026-11-19": {
+  "angulos": [
+   "usos_familia",
+   "atencion",
+   "consejo_reinicio",
+   "plan1"
+  ],
+  "video": [
+   "barra_carga"
+  ],
+  "musica": [
+   "lofi"
+  ],
+  "layouts": [
+   "marco_hilo",
+   "banda_diagonal",
+   "burbuja_mensaje"
+  ],
+  "paletas": [
+   "lila_suave",
+   "claro_lila",
+   "noche"
+  ],
+  "tono": [
+   "cercano"
   ]
  }
 }
