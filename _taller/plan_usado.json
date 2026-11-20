@@ -187,5 +187,32 @@
   "tono": [
    "cercano"
   ]
+ },
+ "2026-11-20": {
+  "angulos": [
+   "usos_casa",
+   "cambio_plan",
+   "web",
+   "eslogan"
+  ],
+  "video": [
+   "maquina_escribir"
+  ],
+  "musica": [
+   "electro"
+  ],
+  "layouts": [
+   "noche_neon",
+   "minimal_blanco",
+   "numero_gigante"
+  ],
+  "paletas": [
+   "degradado_indigo",
+   "morado_intenso",
+   "blanco_negro_acento"
+  ],
+  "tono": [
+   "entusiasta"
+  ]
  }
 }
