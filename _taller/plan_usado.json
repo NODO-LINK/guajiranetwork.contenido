@@ -214,5 +214,32 @@
   "tono": [
    "entusiasta"
   ]
+ },
+ "2026-11-21": {
+  "angulos": [
+   "instalacion",
+   "correo",
+   "usd_bs",
+   "empresa_local"
+  ],
+  "video": [
+   "checklist"
+  ],
+  "musica": [
+   "gaitera"
+  ],
+  "layouts": [
+   "titular_editorial",
+   "lista_checks",
+   "comparativa_columnas"
+  ],
+  "paletas": [
+   "claro_lila",
+   "noche",
+   "lila_suave"
+  ],
+  "tono": [
+   "util"
+  ]
  }
 }
