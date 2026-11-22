@@ -241,5 +241,32 @@
   "tono": [
    "util"
   ]
+ },
+ "2026-11-22": {
+  "angulos": [
+   "usos_gamer",
+   "reporta_pago",
+   "cobertura",
+   "consejo_clave"
+  ],
+  "video": [
+   "chat"
+  ],
+  "musica": [
+   "dembow"
+  ],
+  "layouts": [
+   "poster_tipografico",
+   "pasos_numerados",
+   "tarjeta_central"
+  ],
+  "paletas": [
+   "blanco_negro_acento",
+   "degradado_indigo",
+   "morado_intenso"
+  ],
+  "tono": [
+   "directo"
+  ]
  }
 }
