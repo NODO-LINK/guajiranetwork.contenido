@@ -268,5 +268,32 @@
   "tono": [
    "directo"
   ]
+ },
+ "2026-11-25": {
+  "angulos": [
+   "plan2",
+   "usos_familia",
+   "fibra",
+   "consejo_router"
+  ],
+  "video": [
+   "hilo_de_luz"
+  ],
+  "musica": [
+   "gaitera"
+  ],
+  "layouts": [
+   "burbuja_mensaje",
+   "marco_hilo",
+   "banda_diagonal"
+  ],
+  "paletas": [
+   "lila_suave",
+   "noche",
+   "claro_lila"
+  ],
+  "tono": [
+   "cercano"
+  ]
  }
 }
