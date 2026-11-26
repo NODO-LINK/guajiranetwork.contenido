@@ -15,7 +15,7 @@ git checkout -q main
 git pull -q --rebase origin main
 echo "$(date -Is) inicio" >> "$LOG"
 set +e
-opencode run --auto --dir "$REPO" --model build/big-pickle --title "Contenido diario GN $(date +%F)" -f "$PROMPT" -- "Ejecuta el contenido diario de hoy siguiendo el archivo adjunto. No hagas preguntas." >> "$LOG" 2>&1
+opencode run --auto --dir "$REPO" --model opencode/big-pickle --title "Contenido diario GN $(date +%F)" -f "$PROMPT" -- "Ejecuta el contenido diario de hoy siguiendo el archivo adjunto. No hagas preguntas." >> "$LOG" 2>&1
 rc=$?
 set -e
 echo "$(date -Is) fin rc=$rc" >> "$LOG"
