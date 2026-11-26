@@ -295,5 +295,32 @@
   "tono": [
    "cercano"
   ]
+ },
+ "2026-11-26": {
+  "angulos": [
+   "atencion",
+   "consejo_reinicio",
+   "instagram",
+   "soporte"
+  ],
+  "video": [
+   "pantalla_dividida"
+  ],
+  "musica": [
+   "trap"
+  ],
+  "layouts": [
+   "noche_neon",
+   "numero_gigante",
+   "lista_checks"
+  ],
+  "paletas": [
+   "morado_intenso",
+   "blanco_negro_acento",
+   "degradado_indigo"
+  ],
+  "tono": [
+   "entusiasta"
+  ]
  }
 }
