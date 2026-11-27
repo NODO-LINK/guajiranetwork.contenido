@@ -322,5 +322,32 @@
   "tono": [
    "entusiasta"
   ]
+ },
+ "2026-11-27": {
+  "angulos": [
+   "comparar",
+   "usos_casa",
+   "eslogan",
+   "correo"
+  ],
+  "video": [
+   "zoom_tunel"
+  ],
+  "musica": [
+   "house"
+  ],
+  "layouts": [
+   "minimal_blanco",
+   "comparativa_columnas",
+   "titular_editorial"
+  ],
+  "paletas": [
+   "lila_suave",
+   "claro_lila",
+   "blanco_negro_acento"
+  ],
+  "tono": [
+   "util"
+  ]
  }
 }
