@@ -349,5 +349,32 @@
   "tono": [
    "util"
   ]
+ },
+ "2026-11-28": {
+  "angulos": [
+   "web",
+   "instalacion",
+   "plan1",
+   "usd_bs"
+  ],
+  "video": [
+   "velocimetro"
+  ],
+  "musica": [
+   "lofi"
+  ],
+  "layouts": [
+   "pasos_numerados",
+   "poster_tipografico",
+   "tarjeta_central"
+  ],
+  "paletas": [
+   "noche",
+   "lila_suave",
+   "blanco_negro_acento"
+  ],
+  "tono": [
+   "directo"
+  ]
  }
 }
